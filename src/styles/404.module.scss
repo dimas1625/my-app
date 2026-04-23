@@ -1,0 +1,42 @@
+.error {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #f0f4ff;      // custom warna background
+  font-family: 'Segoe UI', sans-serif;  // custom font
+  text-align: center;
+  padding: 20px;
+
+  &__image {
+    width: 300px;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;               // custom warna judul
+  }
+
+  &__desc {
+    font-size: 1rem;
+    color: #7f8c8d;               // custom warna deskripsi
+  }
+
+  &__btn {
+    margin-top: 8px;
+    padding: 10px 28px;
+    background-color: #3498db;    // custom warna tombol
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #2176ae;
+    }
+  }
+}

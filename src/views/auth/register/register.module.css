@@ -1,0 +1,22 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 12px;
+}
+
+.register h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.register button {
+  padding: 8px 24px;
+  border: none;
+  background: #2ecc71;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}

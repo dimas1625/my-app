@@ -1,0 +1,92 @@
+.editor__container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: sans-serif;
+}
+
+.editor__header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.editor__header h1 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+}
+
+.editor__header p {
+  margin: 0 0 12px 0;
+  opacity: 0.9;
+}
+
+.editor__badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.editor__content h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.editor__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.editor__card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.editor__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.editor__card h3 {
+  font-size: 18px;
+  margin: 0 0 8px 0;
+  color: #2d3748;
+}
+
+.editor__card p {
+  font-size: 14px;
+  color: #718096;
+  margin: 0 0 16px 0;
+}
+
+.editor__btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.editor__btn:hover {
+  background: #5a67d8;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 18px;
+  color: #718096;
+}
