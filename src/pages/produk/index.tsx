@@ -58,11 +58,15 @@ const HalamanProduk = () => {
   const { data, isLoading } = useSWR("/api/produk", fetcher);
 
   return (
-    <div>
-      <h1 style={{ padding: "0 16px" }}>Halaman Produk</h1>
+  <div>
+    <h1 data-testid="product-title">Halaman Produk</h1>
+    {isLoading ? (
+      <p>Loading...</p>
+    ) : (
       <TampilanProduk products={data?.data ?? []} />
-    </div>
-  );
+    )}
+  </div>
+);
 };
 
 export default HalamanProduk;
