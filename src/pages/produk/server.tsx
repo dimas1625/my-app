@@ -24,7 +24,7 @@ export default HalamanProdukServer;
 
 // Ini yang mengambil data di SERVER sebelum halaman dikirim ke browser
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:3000/api/produk");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/produk`);
   const data = await res.json();
 
   return {
