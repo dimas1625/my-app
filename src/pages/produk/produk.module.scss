@@ -1,105 +1,187 @@
 .produk {
-  width: 100%;
-  padding: 0 5%;
+  min-height: 100vh;
+  padding: 60px 5%;
+  position: relative;
+  overflow: hidden;
+  background-color: #020617; // Hitam pekat sebagai dasar
+  font-family: 'Inter', sans-serif;
 
-  &__title {
-    text-align: center;
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 24px;
+  /* --- ANIMATED BACKGROUND LAYER --- */
+  &__bg_layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    
+    // Gumpalan Cahaya Bergerak 1 (Biru)
+    &::before {
+      content: "";
+      position: absolute;
+      width: 600px; height: 600px;
+      top: -150px; left: -150px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
+      filter: blur(100px);
+      animation: moveLight 20s infinite alternate;
+    }
+
+    // Gumpalan Cahaya Bergerak 2 (Ungu/Indigo)
+    &::after {
+      content: "";
+      position: absolute;
+      width: 500px; height: 500px;
+      bottom: -100px; right: -100px;
+      background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, transparent 70%);
+      filter: blur(100px);
+      animation: moveLight 15s infinite alternate-reverse;
+    }
   }
 
-  &__content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  /* --- OVERLAY PATTERN (Grid & Noise) --- */
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    // Grid Garis Halus
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    
+    // Noise Texture (Opsional: Memberikan kesan cinematic)
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.02;
+      background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+      pointer-events: none;
+    }
+  }
 
-    // ===== SKELETON =====
-    &__skeleton {
-      width: 200px;
-      padding: 16px;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: berkedip 1.5s infinite ease-in-out;
+  &__header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    margin-bottom: 60px;
 
-      &__image {
-        width: 100%;
-        height: 200px;
-        background-color: #e0e0e0;
-        border-radius: 4px;
-        margin-bottom: 12px;
-      }
+    h1 {
+      font-size: 50px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: #fff;
+      text-transform: uppercase;
+      // Shadow Glow pada Text
+      text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+      background: linear-gradient(to bottom, #fff, #64748b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-      &__name {
-        width: 80%;
-        height: 20px;
-        background-color: #e0e0e0;
-        border-radius: 4px;
-        margin-bottom: 8px;
-      }
+    p {
+      color: #eeeeee; // Biru Elektrik
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+  }
 
-      &__category {
-        width: 60%;
-        height: 16px;
-        background-color: #e0e0e0;
-        border-radius: 4px;
-        margin-bottom: 8px;
-      }
+  &__grid {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
 
-      &__price {
-        width: 40%;
-        height: 18px;
-        background-color: #e0e0e0;
-        border-radius: 4px;
+  /* --- CARD ITEM: ULTRA GLASSMORPHISM --- */
+  &__item {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 28px;
+    padding: 15px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(63, 87, 223, 0.6);
+      transform: translateY(-15px) rotateX(5deg);
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8), 
+                  0 0 20px rgba(59, 130, 246, 0.2);
+
+      .produk__item__image {
+        transform: scale(1.15) rotate(-5deg);
+        filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
       }
     }
 
-    // ===== ITEM PRODUK =====
-    &__item {
-      width: 200px;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      padding: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      animation: masuk 1.5s ease;
+    &__image_wrapper {
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-      &__image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 4px;
-        margin-bottom: 12px;
-      }
+    &__image {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      transition: all 0.6s ease;
+    }
 
-      &__name {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
+    &__info { padding: 20px 10px; }
 
-      &__price {
-        font-size: 16px;
-        color: #ff5722;
-        font-weight: bold;
-      }
+    &__category {
+      font-size: 10px;
+      font-weight: 800;
+      color: #60a5fa;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
 
-      &__category {
-        font-size: 14px;
-        color: #888;
-        margin-bottom: 8px;
-      }
+    &__name {
+      font-size: 19px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    &__price {
+      font-size: 24px;
+      font-weight: 900;
+      color: #fff;
+      // Efek Border Bawah Harga
+      border-left: 4px solid #3b82f6;
+      padding-left: 12px;
     }
   }
 }
 
-// Animasi skeleton berkedip
-@keyframes berkedip {
-  0%   { opacity: 1; }
-  50%  { opacity: 0.3; }
-  100% { opacity: 1; }
+/* --- ANIMASI --- */
+@keyframes moveLight {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(150px, 100px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@media (max-width: 768px) {
+  .produk {
+    &__header h1 { font-size: 32px; }
+    &__grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    &__item { border-radius: 20px; }
+    &__item__price { font-size: 18px; }
+  }
 }
