@@ -90,7 +90,7 @@ const Tampilanlogin = () => {
             className={style.login__button_primary}
             disabled={isLoading}
           >
-            {isLoading ? "Memproses..." : "Login Ke Akun"}
+            {isLoading ? "Memproses..." : "Login"}
           </button>
 
           <div className={style.login__divider}>
